@@ -1,4 +1,4 @@
-from torch.nn import Sequential, Linear, ReLU, Softmax, Module
+from torch.nn import Linear, Module, ReLU, Sequential, Softmax
 
 
 class PolicyNet(Module):

@@ -2,7 +2,7 @@ from torch import tensor, log
 from torch.distributions import Categorical
 from torch.optim import Adam
 
-from ReinforcementLearning.ActorCritic.Networks import PolicyNet, ValueNet
+from Networks import PolicyNet, ValueNet
 
 
 class ActorCritic:

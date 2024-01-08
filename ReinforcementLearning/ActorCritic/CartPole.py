@@ -1,10 +1,10 @@
 import gym
-from matplotlib.pyplot import figure, plot, xlabel, ylabel, show
+from matplotlib.pyplot import figure, plot, show, xlabel, ylabel
 from numpy import mean
 from torch import tensor
 
-from ReinforcementLearning.ActorCritic import HyperParams
-from ReinforcementLearning.ActorCritic.ActorCritic import ActorCritic
+import HyperParams
+from ActorCritic import ActorCritic
 
 if __name__ == "__main__":
     env = gym.make("CartPole-v1")
