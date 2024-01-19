@@ -1,8 +1,7 @@
-from torch import tensor, log
+from Networks import PolicyNet, ValueNet
+from torch import log, tensor
 from torch.distributions import Categorical
 from torch.optim import Adam
-
-from Networks import PolicyNet, ValueNet
 
 
 class ActorCritic:

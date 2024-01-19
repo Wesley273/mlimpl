@@ -1,10 +1,9 @@
 import gym
-from matplotlib.pyplot import figure, plot, show, xlabel, ylabel
+import HyperParams
+import matplotlib.pyplot as plt
+from ActorCritic import ActorCritic
 from numpy import mean
 from torch import tensor
-
-import HyperParams
-from ActorCritic import ActorCritic
 
 if __name__ == "__main__":
     env = gym.make("CartPole-v1")
@@ -20,8 +19,14 @@ if __name__ == "__main__":
         transitions = []
         # record episode's return to plot
         episode_return = 0
+        # 状态变量：
+        # 1. 小车在轨道上的位置（position of the cart on the track）
+        # 2. 杆子与竖直方向的夹角（angle of the pole with the vertical）
+        # 3. 小车速度（cart velocity）
+        # 4. 角度变化率（rate of change of the angle）
         state = env.reset()[0]
         while True:
+            # action为0代表推动向左移，为1代表推动向右移，施加的力减小或增加的速度不是固定的，它取决于杆子指向的角度。杆子的重心会改变将推车移动到其下方所需的能量
             action = agent.take_action(state)
             next_state, reward, terminated, truncated, _ = env.step(action)
             episode_return += reward
@@ -39,11 +44,11 @@ if __name__ == "__main__":
     env.close()
 
     # plot
-    figure(dpi=400)
-    plot(returns, c="darkblue")
-    xlabel("episode")
-    ylabel("return")
-    show()
+    plt.figure(dpi=400)
+    plt.plot(returns, c="darkblue")
+    plt.xlabel("episode")
+    plt.ylabel("return")
+    plt.show()
 
     env = gym.make("CartPole-v1", render_mode="human")
 
